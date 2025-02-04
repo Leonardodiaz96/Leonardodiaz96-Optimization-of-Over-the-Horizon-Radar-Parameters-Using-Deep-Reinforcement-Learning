@@ -1,0 +1,56 @@
+radio_tierra = 6371
+km_por_grado = (2 * 3.141592653589793 * radio_tierra) / 360  # Cálculo de kilómetros por grado
+dist = dist * km_por_grado
+
+df_detecciones tiene todas las muestras incluidas falsos positivos
+
+A continuación, se encuentran las principales características de estos sistemas de radar:
+
+Frecuencia de Portadora: 3 - 30 MHz.
+
+Potencia del sistema: 55 - 60 dBW.
+
+Profundidad de Rango del área de búsqueda: 500 - 4000 km.
+
+Rango cruzado del área de búsqueda: 1000 - 18000 km.
+
+ACCIONES:
+PRF: frecuencia de repeticion de pulso
+potencia
+
+Rango min = 500km
+rango max = 100km
+
+
+Peco = P_tx + antena_config.Gtx - Atte + RCS + antena_config.Grx
+PClutter = signal_config.Ptx + antena_cfg.Gtx - Atte + RCS_Clutter + antena_cfg.Grx
+Pn = 10*math.log10(signal_config.AB) + c*(math.log(alpha) - ((Desv**2)/(2*c**2))) - 204
+Desv = c*math.sqrt(math.log(1+(beta/(alpha**2))))
+alpha = alpha + math.exp(Fa[i]/c + (Sigma[i])**2/(2*c**2))
+beta = beta + (alpha**2) * (math.exp(((Sigma[i])**2)/(c**2))-1)
+Sigma es ruido galactico yatmosferico que depende de las condiciones del lugar
+
+
+
+
+La ecuación de Bellman sirve como una herramienta central para la formulación y resolución de problemas de decisión secuenciales, donde un agente toma decisiones en un entorno incierto para maximizar su recompensa a largo plazo. Calcula y actualiza los valores de los estados y las acciones en función de las recompensas recibidas y las estimaciones de los valores futuros. 
+
+Capas de la Red:
+Primera Capa Densa: Consiste en 64 unidades con función de activación ReLU (Rectified Linear Unit). La elección de 64 unidades es un balance entre complejidad computacional y capacidad para captar patrones complejos en los datos. El número exacto de unidades es generalmente decidido mediante experimentación y ajuste fino, dependiendo del problema específico y la dimensión del estado de entrada. ReLU se utiliza comúnmente porque ayuda a evitar el problema de desvanecimiento de gradientes y permite modelos más profundos o complejos.
+Segunda Capa Densa: Esta capa tiene un número de unidades igual al tamaño del espacio de acción (action_space) y utiliza la función de activación softmax. Softmax convierte los logits de la capa anterior en probabilidades, lo que facilita la selección de la acción a tomar en un paso de decisión.
+
+
+Se calcula el valor Q para el estado actual y la acción tomada usando el modelo actual. Luego, se estima el máximo valor Q para el próximo estado (next_state), y se actualiza el valor Q actual usando la ecuación de Bellman, que en teoría de aprendizaje por refuerzo ayuda a converger hacia una política óptima.
+
+
+
+target_f = radar.model.predict(state)
+Función: Esta línea genera una predicción para el estado actual utilizando el modelo actual de la red neuronal (radar.model). state representa el estado actual del entorno que el radar ha observado.
+Resultado: target_f contiene los valores Q predichos para todas las posibles acciones desde el estado actual. Es un array donde cada elemento corresponde a una acción posible y su valor Q asociado según el modelo actual.
+
+
+target_f[0][action] = target
+Función: Esta línea actualiza específicamente el valor Q para la acción que fue seleccionada durante la política epsilon-greedy. Aquí, action es el índice de la acción que se eligió, y target es el nuevo valor Q calculado usando la ecuación de Bellman.
+Resultado: Actualiza el array target_f con el nuevo valor Q (target) para la acción seleccionada. Este nuevo valor Q es una combinación del valor Q original y la recompensa recibida más el mejor valor Q estimado para el siguiente estado, ajustado por los parámetros de aprendizaje del modelo (gamma y alfa).
+
+

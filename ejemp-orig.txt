@@ -1,0 +1,759 @@
+"""Módulo con ejemplos de configuraciones de usuario.
+
+En este módulo se definen distintos conjuntos de ejemplos que sirven a modo 
+de guía o referencia para el usuario.
+
+Cada conjunto de ejemplos es un diccionario con el nombre y los datos del
+ejemplo. Cada diccionario contiene al menos una clave `ejemplo-valido-1`,
+que usada a través de todos los ejemplos produce un resultado válido de
+ejemplo.
+
+"""
+import schemas as input_schemas
+
+ejemplos_params_area_busqueda = {
+    'ejemplo-valido-1': {
+        'summary': 'Ejemplo válido 1',
+        'description': 'DIR1. En este ejemplo el centro del area iluminada está ubicado 1000km al este',
+        'value': {
+            'ubicacion_radar': input_schemas.UbicacionGeografica(latitud=-42.554786, longitud=-63.838999),
+            'ubicacion_centro_dir': input_schemas.UbicacionGeografica(latitud= -42.704294, longitud=-51.466354),
+        }
+    },
+    'ejemplo-valido-2': {
+        'summary': 'Ejemplo válido 2',
+        'description': 'DIR2. Otro ejemplo de ubicacion de Radar y area iluminada',
+        'value': {
+            'ubicacion_radar': input_schemas.UbicacionGeografica(latitud=-52.191467, longitud=-68.735689),
+            'ubicacion_centro_dir': input_schemas.UbicacionGeografica(latitud=-59.571756, longitud=-68.366357),
+        }
+    },
+    'ejemplo-valido-3': {
+        'summary': 'Ejemplo válido 3',
+        'description': 'DIR3. Otro ejemplo de ubicacion de Radar y area iluminada',
+        'value': {
+            'ubicacion_radar': input_schemas.UbicacionGeografica(latitud=-52.191467, longitud=-68.735689),
+            'ubicacion_centro_dir': input_schemas.UbicacionGeografica(latitud=-41.243268, longitud=-84.556546),
+        }
+    },
+    'ejemplo-valido-4': {
+        'summary': 'Ejemplo válido 4',
+        'description': 'DIR4. Otro ejemplo de ubicacion de Radar y area iluminada',
+        'value': {
+            'ubicacion_radar': input_schemas.UbicacionGeografica(latitud=-42.554786, longitud=-63.838999),
+            'ubicacion_centro_dir': input_schemas.UbicacionGeografica(latitud=-26.240559, longitud=-74.448930),
+        }
+    },
+    'ejemplo-valido-5': {
+    'summary': 'Ejemplo válido 5',
+    'description': 'DIR5. Otro ejemplo de ubicacion de Radar y area iluminada',
+    'value': {
+        'ubicacion_radar': input_schemas.UbicacionGeografica(latitud=-52.191467, longitud=-68.735689),
+        'ubicacion_centro_dir': input_schemas.UbicacionGeografica(latitud=-65.580897, longitud=-90.888448),
+    }
+    },
+    'ejemplo-invalido-1': {
+        'summary': 'Ejemplo inálido 1',
+        'description': 'En este caso del area iluminada está ubicada demasiado cerca',
+        'value': {
+            'ubicacion_radar': input_schemas.UbicacionGeografica(latitud=0, longitud=0),
+            'ubicacion_centro_dir': input_schemas.UbicacionGeografica(latitud=0, longitud=0),
+        }
+    },
+}
+
+ejemplos_params_escaneo = {
+    'ejemplo-valido-1': {
+        'summary': 'Ejemplo válido 1. 1 escaneo (prueba rápida)',
+        'description': 'Este ejemplo usa un solo escaneo para una corrida rápida o de prueba',
+        'value': {
+            'nro_escaneos': 1,
+            'duracion_escaneos': 10
+        }
+    },
+    'ejemplo-valido-2': {
+        'summary': 'Ejemplo válido 2. 1 escaneo',
+        'description': 'Permite visualizar los resultados agrupados por escaneo',
+        'value': {
+            'nro_escaneos': 1,
+            'duracion_escaneos': 10
+        }
+    },
+    'ejemplo-valido-3': {
+        'summary': 'Ejemplo válido 3. 1 escaneo',
+        'description': 'Permite visualizar los resultados agrupados por escaneo',
+        'value': {
+            'nro_escaneos': 1,
+            'duracion_escaneos': 15
+        }
+    },
+    'ejemplo-valido-4': {
+        'summary': 'Ejemplo válido 4. 1 escaneo',
+        'description': 'Permite visualizar los resultados agrupados por escaneo',
+        'value': {
+            'nro_escaneos': 1,
+            'duracion_escaneos': 15
+        }
+    },
+    'ejemplo-valido-5': {
+        'summary': 'Ejemplo válido 5. 1 escaneo',
+        'description': 'Permite visualizar los resultados agrupados por escaneo',
+        'value': {
+            'nro_escaneos': 1,
+            'duracion_escaneos': 15
+        }
+    }
+}
+
+ejemplos_params_signal = {
+    'ejemplo-valido-1': {
+        'summary': 'Ejemplo válido 1 (BPSK y Barker11)',
+        'description': '',
+        'value': {
+            'operation_mode': input_schemas.TiposModulacion.BPSK,
+            'AB': 5e3,
+            'PRF': 40,
+            'potencia': 40,
+            'T': 11/5e-3,
+            'N': 250,
+            'fs': 15e3,
+            'fc': 0,
+            'tipo_codigo': input_schemas.TiposCodigo.Cod_Barker_11.value,
+        }
+    },
+    'ejemplo-valido-2': {
+        'summary': 'Ejemplo válido 2 (BPSK y Complementario1)',
+        'description': '',
+        'value': {
+            'operation_mode': input_schemas.TiposModulacion.BPSK,
+            'AB': 10e3,
+            'PRF': 40,
+            'potencia': 40,
+            'T': 11/5e-3,
+            'N': 250,
+            'fs': 25e3,
+            'fc': 0,
+            'tipo_codigo': input_schemas.TiposCodigo.Cod_complem_1.value,
+        }
+    },
+    'ejemplo-valido-3': {
+        'summary': 'Ejemplo válido 3 (BPSK y Barker 11)',
+        'description': '',
+        'value': {
+            'operation_mode': input_schemas.TiposModulacion.BPSK,
+            'AB': 5e3,
+            'PRF': 40,
+            'potencia': 40,
+            'T': 11/5e-3,
+            'N': 250,
+            'fs': 15e3,
+            'fc': 0,
+            'tipo_codigo': input_schemas.TiposCodigo.Cod_Barker_11.value,
+        }
+    },
+    'ejemplo-valido-4': {
+        'summary': 'Ejemplo válido 4 (BPSK y Barker 13)',
+        'description': '',
+        'value': {
+            'operation_mode': input_schemas.TiposModulacion.BPSK,
+            'AB': 5e3,
+            'PRF': 40,
+            'potencia': 50,
+            'T': 11/5e-3,
+            'N': 250,
+            'fs': 15e3,
+            'fc': 0,
+            'tipo_codigo': input_schemas.TiposCodigo.Cod_Barker_13.value,
+        }
+    },
+    'ejemplo-valido-5': {
+        'summary': 'Ejemplo válido 5 (LFM)',
+        'description': '',
+        'value': {
+            'operation_mode': input_schemas.TiposModulacion.LFM,
+            'AB': 10e3,
+            'PRF': 40,
+            'potencia': 45,
+            'T': 2e-3,
+            'N': 250,
+            'fs': 3e3,
+            'fc': 0,
+            'tipo_codigo': input_schemas.TiposCodigo.Cod_Barker_13.value,
+        }
+    }
+}
+
+ejemplos_params_pds = {
+    'ejemplo-valido-1': {
+        'summary': 'Ejemplo válido 1 (Pfa de 5e-3)',
+        'description': '',
+        'value': {
+            'detector_rango_doppler': input_schemas.DetectorGenerico(
+                pfa = 5e-3, 
+                n_celdas_guarda = 2, 
+                n_celdas_promediado = 8
+            ),
+            'detector_angulo_arribo': input_schemas.DetectorGenerico(
+                pfa = 5e-7, 
+                n_celdas_guarda = 1, 
+                n_celdas_promediado = 3
+            ),
+            'resolucion_paso_angulo': 100,
+            'rolloff': 0.35
+        }
+    },
+    'ejemplo-valido-2': {
+        'summary': 'Ejemplo válido 2 (Pfa de 5e-3)',
+        'description': '',
+        'value': {
+            'detector_rango_doppler': input_schemas.DetectorGenerico(
+                pfa = 5e-3, 
+                n_celdas_guarda = 2, 
+                n_celdas_promediado = 8
+            ),
+            'detector_angulo_arribo': input_schemas.DetectorGenerico(
+                pfa = 5e-7, 
+                n_celdas_guarda = 1, 
+                n_celdas_promediado = 3
+            ),
+            'resolucion_paso_angulo': 100,
+            'rolloff': 0.35
+        }
+    },
+    'ejemplo-valido-3': {
+        'summary': 'Ejemplo válido 3 (Pfa de 5e-3)',
+        'description': '',
+        'value': {
+            'detector_rango_doppler': input_schemas.DetectorGenerico(
+                pfa = 5e-3, 
+                n_celdas_guarda = 2, 
+                n_celdas_promediado = 8
+            ),
+            'detector_angulo_arribo': input_schemas.DetectorGenerico(
+                pfa = 5e-7, 
+                n_celdas_guarda = 1, 
+                n_celdas_promediado = 3
+            ),
+            'resolucion_paso_angulo': 100,
+            'rolloff': 0.35
+        }
+    },
+    'ejemplo-valido-4': {
+        'summary': 'Ejemplo válido 4 (Pfa de 5e-3)',
+        'description': '',
+        'value': {
+            'detector_rango_doppler': input_schemas.DetectorGenerico(
+                pfa = 5e-3, 
+                n_celdas_guarda = 2, 
+                n_celdas_promediado = 8
+            ),
+            'detector_angulo_arribo': input_schemas.DetectorGenerico(
+                pfa = 5e-7, 
+                n_celdas_guarda = 1, 
+                n_celdas_promediado = 3
+            ),
+        'resolucion_paso_angulo': 100,
+            'rolloff': 0.35
+        }
+    },
+    'ejemplo-valido-5': {
+        'summary': 'Ejemplo válido 5 (Pfa de 10e-3)',
+        'description': '',
+        'value': {
+            'detector_rango_doppler': input_schemas.DetectorGenerico(
+                pfa = 10e-3, 
+                n_celdas_guarda = 2, 
+                n_celdas_promediado = 8
+            ),
+            'detector_angulo_arribo': input_schemas.DetectorGenerico(
+                pfa = 5e-7, 
+                n_celdas_guarda = 1, 
+                n_celdas_promediado = 3
+            ),
+        'resolucion_paso_angulo': 100,
+            'rolloff': 0.35
+        }
+    },
+}
+
+ejemplos_params_arreglos_antenas = {
+    'ejemplo-valido-1': {
+        'summary': 'Ejemplo válido 1',
+        'description': 'Mismos valores para Transmisor y Receptor',
+        'value': {
+                'arreglo_rx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                },
+                'arreglo_tx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                }
+        },
+    },
+    'ejemplo-valido-2': {
+        'summary': 'Ejemplo válido 2',
+        'description': 'Mismos valores para Transmisor y Receptor',
+        'value': {
+                'arreglo_rx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                },
+                'arreglo_tx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                }
+        },
+    },
+    'ejemplo-valido-3': {
+        'summary': 'Ejemplo válido 3',
+        'description': 'Mismos valores para Transmisor y Receptor',
+        'value': {
+                'arreglo_rx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                },
+                'arreglo_tx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                }
+        },
+    },
+    'ejemplo-valido-4': {
+        'summary': 'Ejemplo válido 4',
+        'description': 'Mismos valores para Transmisor y Receptor',
+        'value': {
+                'arreglo_rx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                },
+                'arreglo_tx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                }
+        },
+    },
+    'ejemplo-valido-5': {
+        'summary': 'Ejemplo válido 5',
+        'description': 'Mismos valores para Transmisor y Receptor',
+        'value': {
+                'arreglo_rx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                },
+                'arreglo_tx': {
+                    'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                    'parameter1': 10,
+                    'parameter2': 15,
+                    'design_frequency': 5e6,
+                    'separation': 0.15,
+                    'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                    'f_trabajo_inicial': 1e6,
+                    'f_trabajo_final': 20e6,
+                }
+        },
+    },
+    'ejemplo-invalido-1': {
+        'summary': 'Ejemplo inválido 1',
+        'description': 'Mismos valores **inválidos** para Transmisor y Receptor',
+        'value': {
+        
+            'arreglo_rx': {
+                'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                'parameter1': 0,
+                'parameter2': 0,
+                'design_frequency': 0,
+                'separation': 0,
+                'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                'f_trabajo_inicial': 0,
+                'f_trabajo_final': 0,
+            },
+            'arreglo_tx': {
+                'distribution': input_schemas.TiposDistribucuionesGeom.STAR,
+                'parameter1': 0,
+                'parameter2': 0,
+                'design_frequency': 0,
+                'separation': 0,
+                'pattern': input_schemas.TiposElementosPatron.MONOPOLO_CUARTOONDA,
+                'f_trabajo_inicial': 0,
+                'f_trabajo_final': 0,
+            }
+        }
+    }    
+}
+
+ejemplos_params_medio_propagacion = {
+    'ejemplo-valido-1': {
+        'summary': 'Ejemplo válido 1',
+        'description': '',
+        'value': {
+            'estado_ionosfera':input_schemas.IonosferaEstados.TRANQUILO,
+            'estado_mar':input_schemas.MarEstados.FUERTE_MAREJADA,
+            'tipo_zona':input_schemas.TiposZona.Rural,
+            'timestamp': input_schemas.datetime.datetime(2005,5,16,16,0,0),
+        }
+    },
+    'ejemplo-valido-2': {
+        'summary': 'Ejemplo válido 2',
+        'description': '',
+        'value': {
+            'estado_ionosfera':input_schemas.IonosferaEstados.TRANQUILO,
+            'estado_mar':input_schemas.MarEstados.FUERTE_MAREJADA,
+            'tipo_zona':input_schemas.TiposZona.Rural_Tranquila,
+            'timestamp': input_schemas.datetime.datetime(2006,10,16,16,0,0),
+        }
+    },
+    'ejemplo-valido-3': {
+        'summary': 'Ejemplo válido 3',
+        'description': '',
+        'value': {
+            'estado_ionosfera':input_schemas.IonosferaEstados.TRANQUILO,
+            'estado_mar':input_schemas.MarEstados.FUERTE_MAREJADA,
+            'tipo_zona':input_schemas.TiposZona.Residencial,
+            'timestamp': input_schemas.datetime.datetime(2005,5,16,16,0,0),
+        }
+    },
+    'ejemplo-valido-4': {
+        'summary': 'Ejemplo válido 4',
+        'description': '',
+        'value': {
+            'estado_ionosfera':input_schemas.IonosferaEstados.TRANQUILO,
+            'estado_mar':input_schemas.MarEstados.FUERTE_MAREJADA,
+            'tipo_zona':input_schemas.TiposZona.Comercial,
+            'timestamp': input_schemas.datetime.datetime(2005,5,16,16,0,0),
+        }
+    },
+    'ejemplo-valido-5': {
+        'summary': 'Ejemplo válido 5',
+        'description': '',
+        'value': {
+            'estado_ionosfera':input_schemas.IonosferaEstados.TRANQUILO,
+            'estado_mar':input_schemas.MarEstados.MAREJADILLA,
+            'tipo_zona':input_schemas.TiposZona.Comercial,
+            'timestamp': input_schemas.datetime.datetime(2005,5,16,16,0,0),
+        }
+    },
+}
+
+ejemplos_params_objetivos = {
+    'ejemplo-valido-1': {
+        'summary': '3 objetivos válidos para area iluminada1',
+        'description': 'un avión y 2 barcos alrededor del area iluminada1',
+        'value': [
+            {
+                'tipo': input_schemas.TiposObjetivo.AVION,
+                'size': input_schemas.SizesObjetivo.GRANDE,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -41.701600,
+                    longitud = -50.431690,
+                    altitud = 20e3
+                ),
+                'rapidez_z': 50, # 100 km/h
+                'rapidez_xy': 200, # 350 km/h
+                'direccion': 30
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -43.123224, 
+                    longitud = -51.480250,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 20,
+                'direccion': 30
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.GRANDE,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -42.036282,
+                    longitud = -51.490920,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 40,
+                'direccion': 210
+            }
+        ]
+    },
+    'ejemplo-valido-2': {
+        'summary': '3 objetivos válidos para area iluminada2',
+        'description': 'dos aviones y un barco alrededor del area iluminada2',
+        'value': [
+            {
+                'tipo': input_schemas.TiposObjetivo.AVION,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -59.721043,
+                    longitud = -69.840938,
+                    altitud = 20e3
+                ),
+                'rapidez_z': 50,
+                'rapidez_xy': 150,
+                'direccion': 30
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.AVION,
+                'size': input_schemas.SizesObjetivo.GRANDE,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -60.611895, 
+                    longitud = -65.956542,
+                    altitud = 20e3
+                ),
+                'rapidez_z': 30,
+                'rapidez_xy': 200,
+                'direccion': 60
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.GRANDE,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -58.775913,
+                    longitud = -67.211483,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 40,
+                'direccion': 210
+            }
+        ]
+    }, 
+    'ejemplo-valido-3': {
+        'summary': '3 objetivos válidos para area iluminada3',
+        'description': 'un avion y dos barcos alrededor del area iluminada3',
+        'value': [
+            {
+                'tipo': input_schemas.TiposObjetivo.AVION,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -41.070956,
+                    longitud = -83.983639,
+                    altitud = 25e3
+                ),
+                'rapidez_z': 45,
+                'rapidez_xy': 140,
+                'direccion': 90
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -41.411671, 
+                    longitud = -86.233116,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 50,
+                'direccion': 300
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.GRANDE,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -42.444697,
+                    longitud = -83.503189,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 30,
+                'direccion': 190
+            }
+        ]
+    },
+    'ejemplo-valido-4': {
+        'summary': '3 objetivos válidos para area iluminada4',
+        'description': 'tres barcos alrededor del area iluminada',
+        'value': [
+            {
+                'tipo': input_schemas.TiposObjetivo.AVION,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -25.919867,
+                    longitud = -73.717776,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 50,
+                'direccion': 90
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -27.086743, 
+                    longitud = -74.667132,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 50,
+                'direccion': 300
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.GRANDE,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -25.735064,
+                    longitud = -75.877860,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 30,
+                'direccion': 190
+            }
+        ]
+    },
+    'ejemplo-valido-5': {
+        'summary': '3 objetivos válidos para area iluminada5',
+        'description': 'dos barcos y un avion alrededor del area iluminada',
+        'value': [
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -65.345123,
+                    longitud = -93.811485,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 50,
+                'direccion': 30
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.BARCO,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -65.428723, 
+                    longitud = -88.403248,
+                    altitud = 0
+                ),
+                'rapidez_z': 0,
+                'rapidez_xy': 60,
+                'direccion': 90
+            },
+            {
+                'tipo': input_schemas.TiposObjetivo.AVION,
+                'size': input_schemas.SizesObjetivo.CHICO,
+                'ubicacion': input_schemas.UbicacionGeografica(
+                    latitud = -66.377795,
+                    longitud = -90.846047,
+                    altitud = 12e3
+                ),
+                'rapidez_z': 70,
+                'rapidez_xy': 150,
+                'direccion': 190
+            }
+        ]
+    },    
+}
+
+ejemplos_params_objetivo = {}
+for ejemplo_k, ejemplo_v in ejemplos_params_objetivos.items():
+    aux_v = ejemplo_v.copy()
+    aux_v.update({'description': ''})
+    aux_v.update({'summary': ejemplo_v['summary'].replace('3 objetivos', '1 objetivo')})
+    aux_v.update({'value': ejemplo_v['value'][0]})
+    ejemplos_params_objetivo[ejemplo_k] = aux_v
+
+ejemplos_params_receptor_sh = {
+    'ejemplo-valido-1': {
+        'summary': 'Ejemplo valido 1',
+        'description': '',
+        'value': {
+            'SNR': 95,
+            'SCR': 20,
+            'signal_gain': 250,
+        }
+    },
+    'ejemplo-valido-2': {
+        'summary': 'Ejemplo valido 2',
+        'description': '',
+        'value': {
+            'SNR': 95,
+            'SCR': 30,
+            'signal_gain': 250,
+        }
+    },
+    'ejemplo-valido-3': {
+        'summary': 'Ejemplo valido 3',
+        'description': '',
+        'value': {
+            'SNR': 95,
+            'SCR': 30,
+            'signal_gain': 260,
+        }
+    },
+    'ejemplo-valido-4': {
+        'summary': 'Ejemplo valido 4',
+        'description': '',
+        'value': {
+            'SNR': 95,
+            'SCR': 30,
+            'signal_gain': 250,
+        }
+    },
+    'ejemplo-valido-5': {
+        'summary': 'Ejemplo valido 5',
+        'description': '',
+        'value': {
+            'SNR': 115,
+            'SCR': 30,
+            'signal_gain': 250,
+        }
+    }
+}
