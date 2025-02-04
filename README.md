@@ -1,6 +1,5 @@
 # Software de simulación de Radar OTH (Sobre-horizonte)
 
-Entrega del proyecto PIDDEF 03-2020.
 
 En este repositorio se encuentran:
 
